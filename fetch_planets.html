@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fetch Planets</title>
+        <script>
+            window.addEventListener("load", function() {
+                //TODO: fetch planets JSON
+                let json = [];
+                fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+                    response.json().then(function(json) {
+                        const destination = document.getElementById("destination");
+                    let index = 0;
+                    destination.addEventListener("click", function(){
+                    
+                    destination.innerHTML =`<h3>Planet ${json[index].name}</h3>
+                                            <img src="${json[index].image}" width="500" height="400"> 
+                                            <p>Diameter: ${json[index].diameter}</p>
+                                            <p>Star: ${json[index].star}</p>
+                                            <p>Distance: ${json[index].distance}</p>
+                                            <p>Moon: ${json[index].moons}</p>`
+                    if(index < 5){
+                        index++;
+                    } else {
+                        index = 0
+                    }
+
+                    })
+                })
+                })  
+                
+                        
+            })
+                
+        </script>
+    </head>
+    <body>
+        <img>
+        <h1>Destination</h1>
+        <div id="destination">
+            <h3>CLICK ME!</h3>
+        </div>
+    </body>
+</html>
